@@ -4,7 +4,6 @@ using System.IO;
 using System.IO.Compression;
 using System.Net;
 using System.Text;
-using Newtonsoft.Json.Linq;
 namespace ConsoleApp
 {
     class Program
@@ -18,8 +17,12 @@ namespace ConsoleApp
             Console.WriteLine("开始进行处理...");
             Stopwatch time = new Stopwatch();
             time.Start();
+            
+            //自己写调用，运行
             FileStream input = new FileStream(@"E:\zlib\dev1.rsb.smf", FileMode.Open);
             SmfZlibUnCompressed(input, @"E:\zlib\dev1.rsb.smf.jj");
+            
+            
             time.Stop();
             Console.WriteLine("操作处理结束，耗时{0}毫秒",time.ElapsedMilliseconds.ToString());
             Console.ReadLine();
@@ -191,7 +194,7 @@ namespace ConsoleApp
             }
             else
             {
-                for (int i = 0; i < byteslength; i++)
+                for (int i = 0; i < srcfalsebytes.Length; i++)
                 {
                     falsebytes[i] = srcfalsebytes[i];
                 }
